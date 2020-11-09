@@ -83,5 +83,55 @@ public class TestRepresentant {
 
 	}
 	
-	
+	@Test
+        public void testNom(){
+            assertEquals(r.getNom(),"Bastide");
+        }
+        
+        @Test
+        public void testPrenom(){
+            assertEquals(r.getPrenom(),"Rémi");
+        }
+        
+        @Test
+        public void testAdresse(){
+            r.setAdresse("voie 9 3/4");
+            assertEquals(r.getAdresse(),"voie 9 3/4");
+        }
+        
+        @Test
+        public void testSalaire(){
+            r.setSalaireFixe(0.15f);
+            assertEquals(r.getSalaireFixe(), 0.15f);
+        }
+        
+        @Test
+        public void testSecteur(){
+            ZoneGeographique z = new ZoneGeographique(218, "out of nowhere");
+            r.setSecteur(z);
+            assertEquals(r.getSecteur(), z);
+        }
+        
+        @Test
+        public void testNumero(){
+            assertEquals(r.getNumero(), 36);
+        }
+        
+        @Test
+        public void testErrorCA(){
+            try {
+                r.enregistrerCA(-2, FIXE_BASTIDE);
+                fail();
+            }catch (IllegalArgumentException e){
+                
+            }
+        }
+        
+        @Test
+        public void testToString(){
+            assertEquals(r.toString(),"Representant{" + 
+                    "numero=" + r.getNumero() + ", "+ 
+                    "nom=" + r.getNom() + ", "+
+                    "prenom=" + r.getPrenom() + '}');
+        }
 }
